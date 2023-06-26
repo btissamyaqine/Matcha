@@ -1,14 +1,14 @@
 nav {
-  background-color: #f5f0f0;
+  background-color: #f0f0f0;
   box-shadow: 0 0 0.8em 0.3em rgba(0, 0, 0, 0.25);
   padding: 1.7rem;
 
 }
 ul {
-  list-style: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  list-style: none;
   margin: 0;
   padding: 0;
 }
@@ -25,5 +25,44 @@ li {
   text-decoration: none;
   color: #333;
   font-weight: bold;
+}
+
+form {
+ display: grid;
+ justify-content: center;
+}
+img {
+  max-width: 15%;
+  height:auto;
+  padding: 1.5rem;
+}
+.form-body {
+  display: grid;
+  justify-content: center;
+  /* align-items: center; */
+  padding: 1rem;
+}
+input[type="text"] {
+  padding: 12px 44px;
+  margin: 5px;
+  width: 350px;
+}
+input[type="email"] {
+  padding: 12px 44px;
+  margin: 5px;
+  width: 350px;
+}
+input[type="password"] {
+  padding: 12px 44px;
+  margin: 5px;
+  width: 350px;
+}
+button {
+  width: auto;
+  height: 45px;
+  font-size: larger;
+  color: #f5f0f0;
+  background-color: rgb(108, 163, 247);
+  border: #f5f0f0;
 }
 
