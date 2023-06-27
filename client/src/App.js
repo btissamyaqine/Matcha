@@ -9,6 +9,7 @@ import SignUp from './Component/SignUp';
 
 
 function App() {
+
   return (
     <div className="App">
 
