@@ -1,0 +1,48 @@
+form {
+  display: grid;
+  justify-content: center;
+ }
+ img {
+   padding: 1.5rem;
+ }
+ .form-body {
+   display: grid;
+   justify-content: center;
+   /* align-items: center; */
+   padding: 1rem;
+ }
+
+input[type="email"] {
+  padding: 12px 44px;
+  margin: 5px;
+  width: 350px;
+}
+input[type="password"] {
+  padding: 12px 44px;
+  margin: 5px;
+  width: 350px;
+}
+.qst {
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 44px;
+  margin: 5px;
+}
+.link {
+  text-decoration: none;
+  color:  rgb(52 128 227);
+  font-weight: normal;
+}
+label[for="scales"] {
+  color: rgb(80, 78, 78);
+}
+
+button {
+  width: auto;
+  height: 45px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #f5f0f0;
+  background-color: rgb(52 128 227);
+  border: #f5f0f0;
+}
