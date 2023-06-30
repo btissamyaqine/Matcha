@@ -13,7 +13,7 @@ const db = mysql.createConnection({
   database: "matcha"  
 })
 app.post('/signup', (req, res) => {
-  const sql = "INSERT INTO user (`first_name`, `last_name`, `username`, `email`, `password`) VALUES ('')";
+  const sql = "INSERT INTO user (`first_name`, `last_name`, `username`, `email`, `password`) VALUES (?)";
   const values = [
     req.body.first_name,
     req.body.last_name,
@@ -23,7 +23,7 @@ app.post('/signup', (req, res) => {
   ]
 
   db.query(sql, [values], (err, result) => {
-    if(err) return res.json(err)
+    if(err) return res.json({Message: err})
     return res.json(result)
   })
 })
