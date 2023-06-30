@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import SignIn from './Component/SignIn/SignIn';
 import SignUp from './Component/Signup/SignUp';
+import Home from './Component/Home/Home';
+import NavBar from './Component/Navbar/NavBar'
 
 
 function App() {
@@ -11,11 +13,13 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <Routes>
-        <Route exact path='/' element={<SignIn />} />
-        <Route path='/signup' element={<SignUp />} />
-      </Routes>
-    </BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route exact path='/' element={<Home />} />
+          <Route path='/signin' element={<SignIn />} />
+          <Route path='/signup' element={<SignUp />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

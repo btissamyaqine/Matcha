@@ -13,7 +13,7 @@ const db = mysql.createConnection({
   database: "matcha"  
 })
 app.post('/signup', (req, res) => {
-  const sql = "INSERT INTO user (`first_name`, `last_name`, `username`, `email`, `password`) VALUES (?)";
+  const sql = "INSERT INTO user (`first_name`, `last_name`, `username`, `email`, `password`) VALUES ('')";
   const values = [
     req.body.first_name,
     req.body.last_name,

@@ -5,13 +5,12 @@ import { Link } from 'react-router-dom';
 import logo from './user-signin.png';
 function SignIn() {
   return (
-    <>
-    
-    <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 min-w-[50%]">
-      <div className='columns-1'>
+   
+    <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 min-w-[50%] bg-gray-100">
+      
         <div className="justify-center">
           <img
-            className="mx-auto h-30 w-30"
+            className="mx-auto h-20 w-20 max-w-md max-h-md"
             src={logo}
             alt="signin"
           />
@@ -21,7 +20,7 @@ function SignIn() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action="#" method="POST">
+          <form className="space-y-6 bg-white p-20 px-8 rounded-md arounded-2xl" action="#" method="POST">
             <div>
               <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                 Email address
@@ -69,20 +68,21 @@ function SignIn() {
                 Sign in
               </button>
             </div>
-          </form>
 
-          <p className="mt-10 text-center text-sm text-gray-500">
+            <p className="mt-10 text-center text-sm text-gray-500">
             Not a member?{' '}
             <Link to="/signup" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
               Create your account
             </Link>
           </p>
+          </form>
+
+          
         </div>
-      </div>
         
     </div>
 
-  </>
+
   )
 }
 
