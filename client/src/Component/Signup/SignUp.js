@@ -3,8 +3,6 @@ import axios from 'axios'
 import logo from './user.png'
 import { useNavigate } from 'react-router-dom';
 
-
-
 function SignUp() {
   const [values, setValues] = useState({
     first_name:'',
@@ -13,6 +11,7 @@ function SignUp() {
     email :'',
     password:''
   });
+
   const navigate = useNavigate();
 
   const handleInput = (event) => {
@@ -21,18 +20,17 @@ function SignUp() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    axios.post('http://localhost:5000/signup', values)
+
+    const post = await axios.post('http://localhost:5000/signup', values)
     .then( res => 
       {
-        console.log(res)
-        // navigate("/")
-      }
+          console.log(res);
+          navigate("/signin");
+        }
       )
-    .catch(err => console.log(err))
+    .catch(err => console.log(err)
+    );
   }
-
-
-
   return (
     <div className="isolate bg-gray-100 px-6 py-20 sm:py-20 lg:px-8">
       <div className='grid justify-center items-center'>
@@ -52,6 +50,7 @@ function SignUp() {
                 name="first_name"
                 id="first_name"
                 autoComplete="given-name"
+                required
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -67,6 +66,7 @@ function SignUp() {
                 name="last_name"
                 id="last_name"
                 autoComplete="last_name"
+                required
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -81,7 +81,8 @@ function SignUp() {
                 type="text"
                 name="username"
                 id="username"
-                autoComplete="organization"
+                autoComplete="username"
+                required
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -97,12 +98,13 @@ function SignUp() {
                 name="email"
                 id="email"
                 autoComplete="email"
+                required
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
           <div className="sm:col-span-2">
-            <label htmlFor="email" className="block text-sm font-semibold leading-6 text-gray-900">
+            <label htmlFor="password" className="block text-sm font-semibold leading-6 text-gray-900">
               Password
             </label>
             <div className="mt-2.5">
@@ -112,6 +114,7 @@ function SignUp() {
                 name="password"
                 id="password"
                 autoComplete="password"
+                required
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>

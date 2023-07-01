@@ -1,9 +1,12 @@
 import express from 'express';
 import cors from 'cors';
 import mysql from 'mysql';
+import bcrypt from 'bcryptjs'
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000'
+}))
 app.use(express.json());
 
 const db = mysql.createConnection({
@@ -12,14 +15,19 @@ const db = mysql.createConnection({
   password: '',
   database: "matcha"  
 })
-app.post('/signup', (req, res) => {
-  const sql = "INSERT INTO user (`first_name`, `last_name`, `username`, `email`, `password`) VALUES (?)";
+app.post('/signup', async (req, res) => {
+  const { first_name, last_name, username, email, password } = req.body;
+  const saltRounds = 10;
+  const salt = await bcrypt.genSalt(saltRounds);
+  const saltString = salt.toString();
+  const encryptedPassword = await bcrypt.hash(password, saltString);
+  const sql = "INSERT INTO user (`first_name`, `last_name`, `username`, `email`, `password`) VALUES (?,?,?,?,?)";
   const values = [
-    req.body.first_name,
-    req.body.last_name,
-    req.body.username,
-    req.body.email,
-    req.body.password
+    first_name,
+    last_name,
+    username,
+    email,
+    encryptedPassword
   ]
 
   db.query(sql, [values], (err, result) => {
