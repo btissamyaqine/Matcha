@@ -1,16 +1,48 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
-
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import logo from './user-signin.png';
+
 function SignIn() {
 
+  const [values, setValues] = useState({
+    email:'',
+    password:''
+  });
+  const navigate = useNavigate();
+  const handleInput = (e) => {
+    setValues(presv => ({ ...presv, [e.target.first_name]: [e.target.value]}))
+  };
+  axios.defaults.withCredentials = true;
 
+//   useEffect(() => {
+//   axios.get('http://localhost:5000/profile')
+//   .the(res => {
+//     if (res.data.valid){
+//       navigate('/profile')
+//     } else {
+//       navigate('/signin')
+//     }
+//     console.log(res)
+//   })
+//   .catch(err => console.log(err))
+// }, [])
+const handleSubmit = (e) =>{
+  e.preventDefault();
+  axios.post('http://localhost:5000/signin', values)
+  .then(res => {
+    if(res.data.Login) {
+    navigate('/profile');
 
+    }else {
+      alert("No record")
+    }
+    console.log(res);
+  })
+  .catch(err => console.log(err))
+}
   return (
-   
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 min-w-[50%] bg-gray-100">
-      
         <div className="justify-center">
           <img
             className="mx-auto h-20 w-20 max-w-md max-h-md"
@@ -23,13 +55,14 @@ function SignIn() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6 bg-white p-20 px-8 rounded-md arounded-2xl" action="#" method="POST">
+          <form onSubmit={handleSubmit} className="space-y-6 bg-white p-20 px-8 rounded-md arounded-2xl" action="#" method="POST">
             <div>
               <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                 Email address
               </label>
               <div className="mt-2">
                 <input
+                  onChange={handleInput}
                   id="email"
                   name="email"
                   type="email"
@@ -53,6 +86,7 @@ function SignIn() {
               </div>
               <div className="mt-2">
                 <input
+                  onChange={handleInput}
                   id="password"
                   name="password"
                   type="password"
@@ -65,6 +99,7 @@ function SignIn() {
 
             <div>
               <button
+                onSubmit={handleSubmit}
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >

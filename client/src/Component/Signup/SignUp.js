@@ -21,7 +21,7 @@ function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const post = await axios.post('http://localhost:5000/signup', values)
+    axios.post('http://localhost:5000/signup', values)
     .then( res => 
       {
           console.log(res);

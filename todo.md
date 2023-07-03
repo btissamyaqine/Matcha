@@ -11,7 +11,7 @@
 
 ## Login Page:
 ### Todo:
-- [ ] Create a login Form.
+- [x] Create a login Form.
 - [ ] Authorization with Session and Cookies.
 - [ ] Check If User Exists In The DataBase.
 - [ ] Verify Password Using BcryptJs.
