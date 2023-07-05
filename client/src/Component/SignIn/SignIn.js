@@ -1,43 +1,31 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import bcrypt from 'bcrypt';
 import logo from './user-signin.png';
 
 function SignIn() {
 
-  const [values, setValues] = useState({
-    email:'',
-    password:''
-  });
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   const navigate = useNavigate();
-  const handleInput = (e) => {
-    setValues(presv => ({ ...presv, [e.target.first_name]: [e.target.value]}))
-  };
-  axios.defaults.withCredentials = true;
 
-//   useEffect(() => {
-//   axios.get('http://localhost:5000/profile')
-//   .the(res => {
-//     if (res.data.valid){
-//       navigate('/profile')
-//     } else {
-//       navigate('/signin')
-//     }
-//     console.log(res)
-//   })
-//   .catch(err => console.log(err))
-// }, [])
-const handleSubmit = (e) =>{
-  e.preventDefault();
-  axios.post('http://localhost:5000/signin', values)
+const handleSubmit = async () => {
+
+  const hashedPassword = await bcrypt.hash(password, 10);
+  axios.post('http://localhost:5000/signin', { email, password: hashedPassword })
+
   .then(res => {
-    if(res.data.Login) {
-    navigate('/profile');
-
-    }else {
-      alert("No record")
+    // navigate('/profile');
+    if (res.data.authenticated) {
+      // User is authenticated
+      console.log('Login successful');
+    } else {
+      // User is not authenticated
+      console.log('Login failed');
     }
-    console.log(res);
+    // console.log(res);
   })
   .catch(err => console.log(err))
 }
@@ -62,7 +50,7 @@ const handleSubmit = (e) =>{
               </label>
               <div className="mt-2">
                 <input
-                  onChange={handleInput}
+                  onChange={e => setEmail(prev => ({ ...prev, [e.target.first_name]: [e.target.value]}))}
                   id="email"
                   name="email"
                   type="email"
@@ -86,7 +74,7 @@ const handleSubmit = (e) =>{
               </div>
               <div className="mt-2">
                 <input
-                  onChange={handleInput}
+                  onChange={e => setPassword(prev => ({ ...prev, [e.target.first_name]: [e.target.value]}))}
                   id="password"
                   name="password"
                   type="password"

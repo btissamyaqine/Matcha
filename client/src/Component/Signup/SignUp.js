@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import logo from './user.png'
 import { useNavigate } from 'react-router-dom';
 
 function SignUp() {
-  const [values, setValues] = useState({
+  const [user, setUser] = useState({
     first_name:'',
     last_name:'',
     username :'',
@@ -15,13 +15,13 @@ function SignUp() {
   const navigate = useNavigate();
 
   const handleInput = (event) => {
-    setValues(prev => ({...prev, [event.target.name]: [event.target.value] }))
+    setUser(prev => ({...prev, [event.target.first_name]: [event.target.value] }))
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    axios.post('http://localhost:5000/signup', values)
+    axios.post('http://localhost:5000/signup', user)
     .then( res => 
       {
           console.log(res);
