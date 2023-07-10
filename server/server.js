@@ -15,16 +15,6 @@ app.use(cors({
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.json());
-// app.use(session({
-
-//   secret: 'secret',
-//   resave: false,
-//   saveUninitialized: false,
-//   cookie: {
-//     secure: false,
-//     maxAge: 1000 * 60 * 24
-//   }
-// }))
 
 const db = mysql.createConnection({
   host: "localhost",
@@ -51,7 +41,7 @@ app.post('/signup', async (req, res) => {
     return res.json(result)
   })
 });
-app.post('/login', (req, res) => {
+app.post('/signin', (req, res) => {
   const { email, password } = req.body;
 
   // Retrieve the hashed password from the database for the user attempting to log in
@@ -91,35 +81,6 @@ app.post('/login', (req, res) => {
     }
   );
 });
-
-// app.post('/signin', (req,res) => {
-//   const { email } = req.body
-//   const sql = 'SELECT * FROM user WHERE email= ?';
-//   const values = [email];
-  
-//   db.query(sql, values, async (err, result) => {
-//     if(err) {
-//       return res.json({Message: "Error from server"})
-//     } else {
-//       if(result.length === 0) {
-//         res.json({Success: false, Message: "Email not found" })
-//         console.log(res)
-        
-//       } else {
-//         const users = result[0];
-//         const passwordMatch = await bcrypt.compare(req.body.password, users.password);
-
-//         if(passwordMatch) {
-//           res.json({ Success: true, Message: "Login successful" })
-//         } else {
-//           res.json({ Success: false, Message: "Incorrect password" })
-//         }
-        
-//       }
-//     }
-    
-//   })
-// })
 // app.get('/profile', (req, res) =>{
 //   if(req.username) {
 //     return res.json({valid: true, username: req.username})
