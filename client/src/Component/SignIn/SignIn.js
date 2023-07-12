@@ -9,7 +9,7 @@ function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
 const handleSubmit = async () => {
 
@@ -66,11 +66,11 @@ const handleSubmit = async () => {
                 <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
                   Password
                 </label>
-                {/* <div className="text-sm">
-                  <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                <div className="text-sm">
+                  <Link to="" className="font-semibold text-indigo-600 hover:text-indigo-500">
                     Forgot password?
-                  </a>
-                </div> */}
+                  </Link>
+                </div>
               </div>
               <div className="mt-2">
                 <input
@@ -97,9 +97,9 @@ const handleSubmit = async () => {
 
             <p className="mt-10 text-center text-sm text-gray-500">
             Not a member?{' '}
-            {/* <Link to="/signup" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+            <Link to="/signup" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
               Create your account
-            </Link> */}
+            </Link>
           </p>
           </form>
 
