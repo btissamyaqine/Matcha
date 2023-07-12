@@ -12,9 +12,9 @@
 ## Login Page:
 ### Todo:
 - [x] Create a login Form.
-- [?] Authorization with Session and Cookies "jwt".
+- [ ] jwt authentication.
 - [x] Check If User Exists In The DataBase.
-- [ ] Verify Password Using BcryptJs.
+- [ ] Verify Password Using Bcrypt.
 - [ ] Redirect To Profile On Successfull Authentication
 - [ ] Add Error Messages For Invalid Credentials Or Non Existing Users
 
