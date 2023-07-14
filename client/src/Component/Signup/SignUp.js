@@ -9,7 +9,7 @@ function SignUp() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [msg, setMsg] = useState('');
+
 
   const navigate = useNavigate();
 
@@ -19,10 +19,10 @@ function SignUp() {
 
     await axios.post('http://localhost:5000/signup', {
       firstname: firstname,
-       lastname: lastname, 
-       username: username, 
-       email:email, 
-       password:password 
+      lastname: lastname, 
+      username: username, 
+      email:email, 
+      password:password 
     })
     .then( res => 
       {
