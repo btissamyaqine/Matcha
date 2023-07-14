@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import logo from './user-signin.png';
 
 function SignIn() {
