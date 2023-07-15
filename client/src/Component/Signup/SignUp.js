@@ -18,8 +18,8 @@ function SignUp() {
     e.preventDefault();
 
     await axios.post('http://localhost:5000/signup', {
-      firstname: firstname,
-      lastname: lastname, 
+      first_name: firstname,
+      last_name: lastname, 
       username: username, 
       email:email, 
       password:password 
@@ -27,7 +27,7 @@ function SignUp() {
     .then( res => 
       {
           console.log(res);
-          // navigate("/signin");
+          navigate("/signin");
       }
       )
     .catch(err => console.log(err)
@@ -48,7 +48,7 @@ function SignUp() {
             <div className="mt-2.5">
               <input
                 value={firstname}
-                onChange={(event) => setFirstname(prev => ({...prev, [event.target.firstname]: [event.target.value] }))}
+                onChange={(event) => setFirstname(event.target.value)}
                 type="text"
                 name="first_name"
                 id="first_name"
@@ -65,7 +65,7 @@ function SignUp() {
             <div className="mt-2.5">
               <input
                 value={lastname}
-                onChange={(event) => setLastname(prev => ({...prev, [event.target.firstname]: [event.target.value]}))}
+                onChange={(event) => setLastname(event.target.value)}
                 type="text"
                 name="last_name"
                 id="last_name"
@@ -82,7 +82,7 @@ function SignUp() {
             <div className="mt-2.5">
               <input
                value={username}
-                onChange={(event) => setUsername(prev => ({...prev, [event.target.firstname]: [event.target.value]}))}
+                onChange={(event) => setUsername(event.target.value)}
                 type="text"
                 name="username"
                 id="username"
@@ -99,7 +99,7 @@ function SignUp() {
             <div className="mt-2.5">
               <input
                value={email}
-                onChange={(event) => setEmail(prev => ({...prev, [event.target.firstname]: [event.target.value]}))}
+                onChange={(event) => setEmail(event.target.value)}
                 type="email"
                 name="email"
                 id="email"
@@ -116,7 +116,7 @@ function SignUp() {
             <div className="mt-2.5">
               <input
                value={password}
-                onChange={(event) => setPassword(prev => ({...prev, [event.target.firstname]: [event.target.value]}))}
+                onChange={(event) => setPassword(event.target.value)}
                 type="password"
                 name="password"
                 id="password"

@@ -12,7 +12,7 @@
 ## Login Page:
 ### Todo:
 - [x] Create a login Form.
-- [ ] jwt authentication.
+- [ ] Register and Login with JWT Authentication.
 - [x] Check If User Exists In The DataBase.
 - [ ] Verify Password Using Bcrypt.
 - [ ] Redirect To Profile On Successfull Authentication
