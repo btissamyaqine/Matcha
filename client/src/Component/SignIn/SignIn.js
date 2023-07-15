@@ -8,26 +8,23 @@ function SignIn() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [msg, setMsg] = useState('');
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-const handleSubmit = async () => {
-
-  const hashedPassword = await bcrypt.hash(password, 10);
-  axios.post('http://localhost:5000/signin', { email, password: hashedPassword })
-
-  .then(res => {
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    await axios.post('http://localhost:5000/signin', { email: email, password: password });
+    console.log('user signin')
     // navigate('/profile');
-    if (res.data.authenticated) {
-      // User is authenticated
-      console.log('Login successful');
-    } else {
-      // User is not authenticated
-      console.log('Login failed');
-    }
-    // console.log(res);
-  })
-  .catch(err => console.log(err))
+  } catch (err) {
+      if(err.response) {
+        console.log('user not found')
+        setMsg(err.response.data.msg)
+      }
+  }
+  
 }
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 min-w-[50%] bg-gray-100">
@@ -44,13 +41,15 @@ const handleSubmit = async () => {
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <form onSubmit={handleSubmit} className="space-y-6 bg-white p-20 px-8 rounded-md arounded-2xl" action="#" method="POST">
+            <p className="has-text-centered">{msg}</p>
             <div>
               <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                 Email address
               </label>
               <div className="mt-2">
                 <input
-                  onChange={e => setEmail(prev => ({ ...prev, [e.target.first_name]: [e.target.value]}))}
+                value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   id="email"
                   name="email"
                   type="email"
@@ -74,7 +73,8 @@ const handleSubmit = async () => {
               </div>
               <div className="mt-2">
                 <input
-                  onChange={e => setPassword(prev => ({ ...prev, [e.target.first_name]: [e.target.value]}))}
+                value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   id="password"
                   name="password"
                   type="password"
