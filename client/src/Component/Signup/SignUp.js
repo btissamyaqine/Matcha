@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios'
 import logo from './user.png'
+import logo1 from './fermer.png'
 import { useNavigate } from 'react-router-dom';
 
 function SignUp() {
@@ -34,13 +35,13 @@ function SignUp() {
     );
   }
   return (
-    <div className="isolate bg-gray-100 px-6 py-20 sm:py-20 lg:px-8">
+    <div className="flex min-h-full flex-1 flex-col justify-center lg:px-8 ">
       <div className='grid justify-center items-center'>
-        <img className='mx-auto h-20 w-20 max-w-md max-h-md' src={logo} alt='userlogo'/>
-        <h1 className='text-[25px] font-bold p-2'>Create your account</h1>
+      <img className='mx-auto h-10 w-auto' src={logo} alt='userlogo'/>
+        <h1 className='mt-5 text-center text-3xl font-bold leading-9 tracking-tight text-gray-900'>Create Account</h1>
       </div>
-      <form onSubmit={handleSubmit} action="#" method="POST" className=" rounded-md bg-center bg-white mx-auto mt-16 max-w-xl sm:mt-20">
-        <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 p-20 shadow-xl">
+      <form onSubmit={handleSubmit} action="#" method="POST" className="mx-auto mt-5 max-w-xl sm:mt-7">
+        <div className="grid grid-cols-1 gap-x-2 gap-y-1 sm:grid-cols-2 ">
           <div>
             <label htmlFor="first_name" className="block text-sm font-semibold leading-6 text-gray-900">
               First name
@@ -51,7 +52,6 @@ function SignUp() {
                 onChange={(event) => setFirstname(event.target.value)}
                 type="text"
                 name="first_name"
-                id="first_name"
                 autoComplete="given-name"
                 required
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -68,7 +68,6 @@ function SignUp() {
                 onChange={(event) => setLastname(event.target.value)}
                 type="text"
                 name="last_name"
-                id="last_name"
                 autoComplete="last_name"
                 required
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -85,7 +84,6 @@ function SignUp() {
                 onChange={(event) => setUsername(event.target.value)}
                 type="text"
                 name="username"
-                id="username"
                 autoComplete="username"
                 required
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -102,7 +100,6 @@ function SignUp() {
                 onChange={(event) => setEmail(event.target.value)}
                 type="email"
                 name="email"
-                id="email"
                 autoComplete="email"
                 required
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -119,7 +116,6 @@ function SignUp() {
                 onChange={(event) => setPassword(event.target.value)}
                 type="password"
                 name="password"
-                id="password"
                 autoComplete="password"
                 required
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -138,6 +134,8 @@ function SignUp() {
         </div>
 
       </form>
+      <img className='absolute top-0 p-4 mx-auto h-10 w-auto' src={logo1} alt='logo' />
+
     </div>
   
   )
