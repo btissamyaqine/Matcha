@@ -1,19 +1,45 @@
 import React, { useState } from 'react';
-import axios from 'axios'
-import logo from './user.png'
-import logo1 from './fermer.png'
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
+function Copyright(props) {
+  return (
+    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+      {'Copyright © '}
+      <Link color="inherit" href="issamyaqine.github.io">
+        Btissam YAQINE
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
+
+// TODO remove, this demo shouldn't need to reset the theme.
+
+const defaultTheme = createTheme();
 
 function SignUp() {
-  const [firstname, setFirstname] = useState('');
+
+    const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-
-  const navigate = useNavigate();
-
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,111 +60,117 @@ function SignUp() {
     .catch(err => console.log(err)
     );
   }
+
   return (
-    <div className="flex min-h-full flex-1 flex-col justify-center lg:px-8 ">
-      <div className='grid justify-center items-center'>
-      <img className='mx-auto h-10 w-auto' src={logo} alt='userlogo'/>
-        <h1 className='mt-5 text-center text-3xl font-bold leading-9 tracking-tight text-gray-900'>Create Account</h1>
-      </div>
-      <form onSubmit={handleSubmit} action="#" method="POST" className="mx-auto mt-5 max-w-xl sm:mt-7">
-        <div className="grid grid-cols-1 gap-x-2 gap-y-1 sm:grid-cols-2 ">
-          <div>
-            <label htmlFor="first_name" className="block text-sm font-semibold leading-6 text-gray-900">
-              First name
-            </label>
-            <div className="mt-2.5">
-              <input
-                value={firstname}
-                onChange={(event) => setFirstname(event.target.value)}
-                type="text"
-                name="first_name"
-                autoComplete="given-name"
-                required
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
-            </div>
-          </div>
-          <div>
-            <label htmlFor="last_name" className="block text-sm font-semibold leading-6 text-gray-900">
-              Last name
-            </label>
-            <div className="mt-2.5">
-              <input
-                value={lastname}
-                onChange={(event) => setLastname(event.target.value)}
-                type="text"
-                name="last_name"
-                autoComplete="last_name"
-                required
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
-            </div>
-          </div>
-          <div className="sm:col-span-2">
-            <label htmlFor="username" className="block text-sm font-semibold leading-6 text-gray-900">
-              Username
-            </label>
-            <div className="mt-2.5">
-              <input
-               value={username}
-                onChange={(event) => setUsername(event.target.value)}
-                type="text"
-                name="username"
-                autoComplete="username"
-                required
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
-            </div>
-          </div>
-          <div className="sm:col-span-2">
-            <label htmlFor="email" className="block text-sm font-semibold leading-6 text-gray-900">
-              Email
-            </label>
-            <div className="mt-2.5">
-              <input
-               value={email}
-                onChange={(event) => setEmail(event.target.value)}
-                type="email"
-                name="email"
-                autoComplete="email"
-                required
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
-            </div>
-          </div>
-          <div className="sm:col-span-2">
-            <label htmlFor="password" className="block text-sm font-semibold leading-6 text-gray-900">
-              Password
-            </label>
-            <div className="mt-2.5">
-              <input
-               value={password}
-                onChange={(event) => setPassword(event.target.value)}
-                type="password"
-                name="password"
-                autoComplete="password"
-                required
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
-            </div>
-          </div>
-          <div className="sm:col-span-2">
-          <button
-            onSubmit={handleSubmit}
-            type="submit"
-            className="block w-full rounded-md bg-[#2bee7c] px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-[#4fd185]  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          >
-            Singup
-          </button>
-        </div>
-        </div>
-
-      </form>
-      <img className='absolute top-0 p-4 mx-auto h-10 w-auto' src={logo1} alt='logo' />
-
-    </div>
-  
-  )
+    <ThemeProvider theme={defaultTheme}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 12,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign up
+          </Typography>
+          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  value={firstname}
+                  onSubmit={(e) => setFirstname(e.target.value)}
+                  autoComplete="given-name"
+                  name="firstname"
+                  required
+                  fullWidth
+                  id="firstName"
+                  label="First Name"
+                  autoFocus
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  value={lastname}
+                  onSubmit={(e) => setLastname(e.target.value)}
+                  required
+                  fullWidth
+                  id="lastname"
+                  label="Last Name"
+                  name="lastname"
+                  autoComplete="family-name"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  value={username}
+                  onSubmit={(e) => setUsername(e.target.value)}
+                  required
+                  fullWidth
+                  id="username"
+                  label="Username"
+                  name="username"
+                  autoComplete="username"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  value={email}
+                  onSubmit={(e) => setEmail(e.target.value)}
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  value={password}
+                  onSubmit={(e) => setPassword(e.target.value)}
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="new-password"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <FormControlLabel
+                  control={<Checkbox value="allowExtraEmails" color="primary" />}
+                  label="I want to receive inspiration, marketing promotions and updates via email."
+                />
+              </Grid>
+            </Grid>
+            <Button
+               onSubmit={handleSubmit}
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Sign Up
+            </Button>
+            <Grid container justifyContent="flex-end">
+              <Grid item>
+                <Link to="/signin" variant="body2">
+                  Already have an account? Sign in
+                </Link>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+        <Copyright sx={{ mt: 5 }} />
+      </Container>
+    </ThemeProvider>
+  );
 }
-
-export default SignUp
+export default SignUp;

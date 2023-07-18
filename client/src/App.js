@@ -7,8 +7,8 @@ import SignUp from './Component/Signup/SignUp';
 import Home from './Component/Home/Home';
 import NavBar from './Component/Navbar/NavBar';
 import Profile from './Component/Profile/Profile';
-import Signin from './Component/Modals/Signin';
-import Signup from './Component/Modals/Signup';
+// import Signin from './Component/Modals/Signin';
+// import Signup from './Component/Modals/Signup';
 
 
 function App() {
@@ -19,8 +19,8 @@ function App() {
         <NavBar />
         <Routes>
           <Route exact path='/' element={<Home />} />
-          <Route path='/signin' element={<Signin />} />
-          <Route path='/signup' element={<Signup />} />
+          <Route path='/signin' element={<SignIn />} />
+          <Route path='/signup' element={<SignUp />} />
           <Route path='/profile' element={<Profile />} />
         </Routes>
       </BrowserRouter>

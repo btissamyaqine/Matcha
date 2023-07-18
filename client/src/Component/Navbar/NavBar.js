@@ -1,30 +1,133 @@
-import React, { useState } from 'react'
+
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Signin from '../Modals/Signin';
-import Signup from '../Modals/Signup';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Menu from '@mui/material/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
+import Container from '@mui/material/Container';
+import Button from '@mui/material/Button';
+import MenuItem from '@mui/material/MenuItem';
+import AdbIcon from '@mui/icons-material/Adb';
 
 
 function NavBar() {
-  const [activeModal, setActiveModal] = useState(null);
-  // const [modalOpen, setModalOpen] = useState(false);
+  const [anchorElNav, setAnchorElNav] = useState(null);
 
-  const openModal = (modalName) => {
-    setActiveModal(modalName);
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
+ 
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
   };
 
-  const closeModal = () => {
-    setActiveModal(null);
-  };
   return (
-    <nav className='container mx-auto px-4 flex max-w-7xl justify-between p-9 lg:px-8 shadow-2xl'>
-        <Link className='text-xl text-[green] font-bold' to="/">LOGO</Link>
-        <ul className='flex space-x-3'>
-          <li><Link to='/signup' onClick={() => openModal('Signup')} className='py-2.5 px-4 text-[white] font-medium bg-auto bg-red-600 hover:bg-red-500 rounded-md '>SignUp</Link>{activeModal === 'Signup' && <Signup openSignup={true} closeSignup={closeModal} />}</li>
-          <li><Link to='/signin' onClick={() => openModal('Signin')} className='py-2.5 px-4 text-[white] font-medium bg-auto bg-indigo-500 hover:bg-indigo-600 rounded-md'> Signin</Link>{activeModal === 'Signin' && <Signin openSignin={true} closeSignin={closeModal} />}</li>
+    <AppBar position="absolute">
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
+          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <Typography
+            variant="h6"
+            noWrap
+            exact="true"
+            component={Link}
+            to="/"
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            LOGO
+          </Typography>
 
-      </ul>
-    </nav>
-  )
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
+            >
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{
+                
+                display: { xs: 'block', md: 'none' },
+              }}
+            >
+                <MenuItem component={Link} to='/' onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">Dashbord</Typography>
+                </MenuItem>
+                <MenuItem component={Link} to='/signin' onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">Signin</Typography>
+                </MenuItem>
+                <MenuItem component={Link} to='/signup' onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">Signup</Typography>
+                </MenuItem>
+              
+            </Menu>
+
+          </Box>
+          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <Typography
+          
+            variant="h5"
+            noWrap
+            component={Link}
+            to="/"
+            sx={{
+              mr: 2,
+              display: { xs: 'flex', md: 'none' },
+              flexGrow: 2,
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            LOGO
+          </Typography>
+          <Box sx={{flexGrow: 1,  display: { xs: 'none', md: 'flex' } }}>
+            
+              <Button exact="true" component={Link} to='/' onClick={handleCloseNavMenu} sx={{ flexGrow: 2, my: 2, color: 'white', display: 'block' }}>
+                  <Typography textAlign="center" variant="body1">Dashbord</Typography>
+              </Button>
+              <Button component={Link} to='/signin' onClick={handleCloseNavMenu} sx={{ flexGrow: 2, my: 2, color: 'white', display: 'block' }}>
+                  <Typography variant="body1" textAlign="center">Signin</Typography>
+              </Button>
+
+              <Button component={Link} to='/signup' onClick={handleCloseNavMenu} sx={{ flexGrow: 2, my: 2, color: 'white', display: 'block' }}>
+                  <Typography variant="body1" textAlign="center">Signup</Typography>
+              </Button>           
+          </Box>
+        </Toolbar>
+      </Container>
+    </AppBar>
+  );
 }
-
-export default NavBar
+export default NavBar;
