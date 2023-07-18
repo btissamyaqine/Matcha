@@ -19,7 +19,7 @@ function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="issamyaqine.github.io">
+      <Link color="inherit" href="https://btissamyaqine.github.io/">
         Btissam YAQINE
       </Link>{' '}
       {new Date().getFullYear()}
@@ -84,12 +84,11 @@ function SignUp() {
               <Grid item xs={12} sm={6}>
                 <TextField
                   value={firstname}
-                  onSubmit={(e) => setFirstname(e.target.value)}
+                  onChange={(e) => setFirstname(e.target.value)}
                   autoComplete="given-name"
                   name="firstname"
                   required
                   fullWidth
-                  id="firstName"
                   label="First Name"
                   autoFocus
                 />
@@ -97,10 +96,9 @@ function SignUp() {
               <Grid item xs={12} sm={6}>
                 <TextField
                   value={lastname}
-                  onSubmit={(e) => setLastname(e.target.value)}
+                  onChange={(e) => setLastname(e.target.value)}
                   required
                   fullWidth
-                  id="lastname"
                   label="Last Name"
                   name="lastname"
                   autoComplete="family-name"
@@ -109,10 +107,9 @@ function SignUp() {
               <Grid item xs={12}>
                 <TextField
                   value={username}
-                  onSubmit={(e) => setUsername(e.target.value)}
+                  onChange={(e) => setUsername(e.target.value)}
                   required
                   fullWidth
-                  id="username"
                   label="Username"
                   name="username"
                   autoComplete="username"
@@ -120,26 +117,27 @@ function SignUp() {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  value={email}
-                  onSubmit={(e) => setEmail(e.target.value)}
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
+                 value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                autoFocus
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
                   value={password}
-                  onSubmit={(e) => setPassword(e.target.value)}
+                  onChange={(e) => setPassword(e.target.value)}
                   required
                   fullWidth
                   name="password"
                   label="Password"
                   type="password"
-                  id="password"
                   autoComplete="new-password"
                 />
               </Grid>
