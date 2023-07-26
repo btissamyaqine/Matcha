@@ -63,11 +63,13 @@ function SignUp() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="xs">
+    <main>
+
+      <Container maxWidth="xs">
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 12,
+            marginTop: 8,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -166,8 +168,25 @@ function SignUp() {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 5 }} />
       </Container>
+    </main>
+    {/* Footer */}
+    <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
+      <Typography variant="h6" align="center" gutterBottom>
+        Footer
+      </Typography>
+      <Typography
+        variant="subtitle1"
+        align="center"
+        color="text.secondary"
+        component="p"
+      >
+        Something here to give the footer a purpose!
+      </Typography>
+      <Copyright />
+    </Box>
+    {/* End footer */}
+    
     </ThemeProvider>
   );
 }
