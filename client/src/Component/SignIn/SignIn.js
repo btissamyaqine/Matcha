@@ -29,7 +29,7 @@ export default function SignIn() {
   try {
     await axios.post('http://localhost:5000/signin', { email: email, password: password });
     console.log('user signin')
-    // navigate('/profile');
+    navigate('/profile');
   } catch (err) {
       if(err.response) {
         console.log('user not found')

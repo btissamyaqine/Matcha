@@ -30,7 +30,7 @@ function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await axios.post('http://localhost:5000/signup', {
+    await axios.post('http://localhost:5000/users', {
       first_name: firstname,
       last_name: lastname, 
       username: username, 

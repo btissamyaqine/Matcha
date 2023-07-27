@@ -7,7 +7,7 @@ export const getUsers = async(req, res) => {
     // const users = await Users.findOne({ email });
     //  if (users) return res.status(400).json({ message: "User already exists" });
      const users = await Users.findAll({
-      attributes: ['first_name', 'last_name', 'username', 'email']
+      attributes: ['id', 'first_name', 'last_name', 'username', 'email']
      });
      res.json(users);
 
@@ -68,4 +68,22 @@ export const Signin = async(req, res) => {
   } catch (error) {
       res.status(404).json({msg:"Email not found"});
   }
+}
+export const Logout = async(req, res) => {
+  const refreshToken = req.cookies.refreshToken;
+  if(!refreshToken) return res.sendStatus(204);
+  const user = await Users.findAll({
+      where:{
+          refresh_token: refreshToken
+      }
+  });
+  if(!user[0]) return res.sendStatus(204);
+  const userId = user[0].id;
+  await Users.update({refresh_token: null},{
+      where:{
+          id: userId
+      }
+  });
+  res.clearCookie('refreshToken');
+  return res.sendStatus(200);
 }
